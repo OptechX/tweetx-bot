@@ -1,6 +1,7 @@
 name: Twitter Action
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 8,20 * * *' # Run at 8am and 8pm
 
