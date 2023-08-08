@@ -1,9 +1,8 @@
 name: Twitter Action
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 8,20 * * *' # Run at 8am and 8pm
 
 jobs:
   tweet:
@@ -11,10 +10,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: 3.x
 
@@ -31,4 +30,6 @@ jobs:
         TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
         TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
       run: |
-        python run_tweepy.py
+        Get-Date
+        # python run_tweepy.py
+      shell: pwsh
